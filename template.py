@@ -1,11 +1,12 @@
 DAY = 1
 
-TESTS = """
+TESTS = """a,a///aa
 """
 
-with open(f"day{DAY}.txt") as f:
-
-    data = f.readlines()
+def load_puzzle():
+    with open(f"day{DAY}.txt") as f:
+        data = f.readlines()
+    return data
 
 def solve(data):
 
@@ -16,6 +17,7 @@ def check():
     success = True
 
     for row in TESTS.split("\n"):
+        if not len(row):    continue
 
         data, expected = row.split("///")
         print(data, "should get", expected)
@@ -35,4 +37,4 @@ def check():
 if __name__ == "__main__":
 
     if check():
-        print("FINAL ANSWER: ", solve(data))
+        print("FINAL ANSWER: ", solve(load_puzzle()))
